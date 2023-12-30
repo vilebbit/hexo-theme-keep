@@ -130,17 +130,17 @@ KEEP.initUtils = () => {
     toggleShowToolsList() {
       const sideToolsListDom = document.querySelector('.side-tools-list')
       const toggleShowToolsDom = document.querySelector('.tool-toggle-show')
-      toggleShowToolsDom.addEventListener('click', (e) => {
-        sideToolsListDom.classList.toggle('show')
+      toggleShowToolsDom?.addEventListener('click', (e) => {
+        sideToolsListDom?.classList?.toggle('show')
         e.stopPropagation()
       })
-      sideToolsListDom.querySelectorAll('.tools-item').forEach((item) => {
+      sideToolsListDom?.querySelectorAll('.tools-item')?.forEach((item) => {
         item.addEventListener('click', (e) => {
           e.stopPropagation()
         })
       })
       document.addEventListener('click', () => {
-        sideToolsListDom.classList.contains('show') && sideToolsListDom.classList.remove('show')
+        sideToolsListDom?.classList?.contains('show') && sideToolsListDom?.classList?.remove('show')
       })
     },
 
@@ -169,13 +169,13 @@ KEEP.initUtils = () => {
 
       initFontSize()
 
-      document.querySelector('.tool-font-adjust-plus').addEventListener('click', () => {
+      document.querySelector('.tool-font-adjust-plus')?.addEventListener('click', () => {
         if (this.fontSizeLevel === 5) return
         this.fontSizeLevel++
         setFontSize(this.fontSizeLevel)
       })
 
-      document.querySelector('.tool-font-adjust-minus').addEventListener('click', () => {
+      document.querySelector('.tool-font-adjust-minus')?.addEventListener('click', () => {
         if (this.fontSizeLevel <= 0) return
         this.fontSizeLevel--
         setFontSize(this.fontSizeLevel)

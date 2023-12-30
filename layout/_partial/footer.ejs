@@ -69,10 +69,19 @@ const web_master = bi_author || hexo_author
                 <% if (web_master) { %>
                     &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="<%- url_for('/') %>"><%= web_master %></a>
                 <% } %>
+                &nbsp;/&nbsp;
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed">
+                        <i class="fa-brands fa-creative-commons"></i>
+                        <i class="fa-brands fa-creative-commons-by"></i>
+                        <i class="fa-brands fa-creative-commons-nc"></i>
+                        <i class="fa-brands fa-creative-commons-sa"></i>
+                    </a>
+                </div>
             </div>
 
             <div class="theme-info info-item <%= footer_style_type %>">
-                <%- __('footer.powered_by', '<a target="_blank" href="https://hexo.io">Hexo</a>') %>&nbsp;&&nbsp;<%- __('theme') %>&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+                <%- __('footer.powered_by', '<a target="_blank" href="https://hexo.io">Hexo</a>') %>
             </div>
 
             <% if (f_icp?.enable && f_icp?.record_code) { %>

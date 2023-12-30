@@ -4,9 +4,11 @@ function initPostShareHelper() {
   KEEP.utils.postShareHelper = {
     postShareHandle() {
       const pageUrl = window.location.href
-      const pageTitle = window.document.title
+      const pageTitle = window.document.title.replace("|", "-")
 
       const shareContainer = document.querySelector('.post-share-container .share-list-wrap')
+      const arbitraryShareDom = document.querySelector('.arbitrary-share')
+      const postLang = KEEP.language_post
 
       // WeChat share
       const wechatShare = shareContainer.querySelector('.wechat')
@@ -18,18 +20,38 @@ function initPostShareHelper() {
 
       shareContainer.querySelectorAll('.share-item').forEach((item) => {
         item.addEventListener('click', () => {
-          // QQ share
-          if (item.classList.contains('qq')) {
-            window.open(`https://connect.qq.com/widget/shareqq/index.html?url=${pageUrl}`)
-          }
 
-          // WeiBo share
-          if (item.classList.contains('weibo')) {
+          // Telegram
+          if (item.classList.contains('telegram')) {
             window.open(
-              `https://service.weibo.com/share/share.php?url=${pageUrl}&title=${pageTitle}`
+              `https://t.me/share/url?url=${pageUrl}&text=${pageTitle}`
             )
           }
+
+          // twitter
+          if (item.classList.contains('twitter')) {
+            window.open(
+              `https://twitter.com/share?url=${pageUrl}&text=${pageTitle}`
+            )
+          }
+
+          // Arbitrary link copy
+          if (item.classList.contains('arbitrary-share')) {
+            navigator.clipboard.writeText(pageUrl).then(() => {
+              if (arbitraryShareDom) {
+                const tooltipDom = arbitraryShareDom.querySelector('.tooltip-content')
+                tooltipDom && (tooltipDom.innerHTML = "Copied")
+              }
+            })
+          }
         })
+      })
+
+      arbitraryShareDom?.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+          const tooltipDom = arbitraryShareDom.querySelector('.tooltip-content')
+          tooltipDom && (tooltipDom.innerHTML = postLang.share.arbitrary_share)
+        }, 500)
       })
     }
   }

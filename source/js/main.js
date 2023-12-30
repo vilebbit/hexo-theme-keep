@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
       `padding: 6px 0;`
     )
   }
-  KEEP.printThemeInfo()
+  // KEEP.printThemeInfo()
 
   // set version number of footer
   KEEP.setFooterVersion = () => {

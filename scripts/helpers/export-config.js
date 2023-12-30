@@ -49,5 +49,6 @@ hexo.extend.helper.register('exportThemeConfig', function () {
     KEEP.language_ago = ${JSON.stringify(languageContent['ago'])}
     KEEP.language_code_block = ${JSON.stringify(languageContent['code_block'])}
     KEEP.language_copy_copyright = ${JSON.stringify(languageContent['copy_copyright'])}
+    KEEP.language_post = ${JSON.stringify(languageContent['post'])}
   </script>`
 })

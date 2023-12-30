@@ -7,7 +7,7 @@ const home_tag_limit_number = 5
     <div class="post-meta-info border-box">
         <% if (page_type === 'home') { %>
             <span class="meta-info-item border-box">
-                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="<%= post.updated %>"><%= date(post.updated, 'YYYY-MM-DD HH:mm:ss') %></span>
+                <i class="icon fas fa-history"></i>&nbsp;<span class="home-post-history" data-updated="<%= post.date %>"><%= date(post.date, 'YYYY-MM-DD') %></span>
             </span>
         <% } %>
 
@@ -16,11 +16,6 @@ const home_tag_limit_number = 5
                 <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
                 <span class="pc"><%= date(post.date, theme.post?.datetime_format || 'YYYY-MM-DD HH:mm:ss') %></span>
                 <span class="mobile"><%= date(post.date, 'YYYY-MM-DD HH:mm') %></span>
-            </span>
-
-            <span class="meta-info-item post-update-date">
-                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="<%= post.updated %>"><%= date(post.updated, theme.post?.datetime_format || 'YYYY-MM-DD HH:mm:ss') %></span>
             </span>
         <% } %>
 

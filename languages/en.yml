@@ -92,6 +92,10 @@ post:
     wechat: "Share to WeChat"
     weibo: "Share to WeiBo"
     wechat_scan: "Scan by WeChat"
+    telegram: "Share to Telegram"
+    discord: "Share to Discord"
+    twitter: "Share to Twitter(X)"
+    arbitrary_share: "Copy permalink"
   reward: Reward Author
 comment:
   comments: Comments

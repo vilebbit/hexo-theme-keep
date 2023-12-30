@@ -33,12 +33,6 @@ const post_avatar = page?.avatar || theme?.base_info?.avatar
                             </div>
                         <% } %>
                         <div class="info-box">
-                            <div class="author border-box">
-                                <span class="name"><%= post_author %></span>
-                                <% if (theme?.post?.author_badge?.enable === true) { %>
-                                    <span class="author-badge"><%- getAuthorBadge(site.posts.length, theme?.post?.author_badge) %></span>
-                                <% } %>
-                            </div>
                             <div class="meta-info border-box">
                                 <%- partial('_partial/post/post-meta-info', { post: page, page_type: 'post' }) %>
                             </div>

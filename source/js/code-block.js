@@ -145,5 +145,7 @@ KEEP.initCodeBlock = () => {
       shrinkHandle(element)
     })
   }
-  KEEP.utils.shrinkCodeBlock()
+  if (KEEP.theme_config?.code_block?.shrink_code === true) {
+    KEEP.utils.shrinkCodeBlock()
+  }
 }
