@@ -11,6 +11,7 @@ KEEP.initModeToggle = () => {
       this.iconDom.className = 'fas fa-moon'
       KEEP.themeInfo.styleStatus.isDark = false
       KEEP.setStyleStatus()
+      window?.artalk && window.artalk.setDarkMode(false)
     },
 
     enableDarkMode() {
@@ -19,6 +20,7 @@ KEEP.initModeToggle = () => {
       this.iconDom.className = 'fas fa-sun'
       KEEP.themeInfo.styleStatus.isDark = true
       KEEP.setStyleStatus()
+      window?.artalk && window.artalk.setDarkMode(true)
     },
 
     isDarkPrefersColorScheme() {
@@ -31,7 +33,11 @@ KEEP.initModeToggle = () => {
       if (styleStatus) {
         styleStatus.isDark ? this.enableDarkMode() : this.enableLightMode()
       } else {
-        this.isDarkPrefersColorScheme().matches ? this.enableDarkMode() : this.enableLightMode()
+        if (KEEP?.theme_config?.respect_user_color) {
+          this.isDarkPrefersColorScheme().matches ? this.enableDarkMode() : this.enableLightMode()
+        } else {
+          this.enableDarkMode()
+        }
       }
     },
 

@@ -69,6 +69,11 @@ const home_tag_limit_number = 5
                 <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
             </span>
         <% } %>
+        <% if (page_type === 'post') { %>
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="ArtalkPV"></span>
+            </span>
+        <% } %>
     </div>
 
     <% if (page_type === 'home') { %>

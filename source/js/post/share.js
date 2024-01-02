@@ -28,6 +28,13 @@ function initPostShareHelper() {
             )
           }
 
+          // WhatsApp
+          if (item.classList.contains('whatsapp')) {
+            window.open(
+              `https://wa.me?text=${pageUrl} ${pageTitle}`
+            )
+          }
+
           // twitter
           if (item.classList.contains('twitter')) {
             window.open(

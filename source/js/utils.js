@@ -646,7 +646,7 @@ KEEP.initUtils = () => {
                   if (charIndex < text.length) {
                     desc.textContent += text.charAt(charIndex)
                     charIndex++
-                    setTimeout(typewriter, 100)
+                    setTimeout(typewriter, 70)
                   } else {
                     cursor.style.display = 'none'
                   }

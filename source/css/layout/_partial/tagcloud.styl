@@ -10,6 +10,18 @@
       display inline-block
       box-sizing border-box
       padding 0.68rem 0.5rem
+
+      .count::before {
+        content: ' ('
+      }
+
+      .count::after {
+        content: ')'
+      }
+    }
+
+    a::before {
+      content: '#'
     }
   }
 }

@@ -139,3 +139,21 @@ transition-t(property, delay, duration, function) {
     transform rotate(-5deg)
   }
 }
+
+@keyframes typing {
+  75%,
+  100% {
+    max-width: calc(var(--characters) * 2ch);
+  }
+}
+
+@keyframes blink {
+  0%,
+  75%,
+  100% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+}

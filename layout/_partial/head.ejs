@@ -4,6 +4,7 @@
     <meta name="keywords" content="<%= page?.keywords || config?.keywords || 'Hexo Theme Keep' %>">
     <meta name="description" content="<%= page?.description || config?.description || 'Hexo Theme Keep' %>">
     <meta name="author" content="<%= theme?.base_info?.author || config?.author || 'Keep Team' %>">
+    <%- open_graph() %>
     <%
     let title = page.title;
     if (is_archive()) {
@@ -23,9 +24,10 @@
     %>
     <title>
         <% if (title) { %>
-            <%= title %> |
+            <%= `${title} - ${config?.subtitle}` %> 
+        <% } else { %>
+            <%= theme?.base_info?.title || config?.title || 'Keep Theme' %>
         <% } %>
-        <%= theme?.base_info?.title || config?.title || 'Keep Theme' %>
     </title>
     <%- css('css/style') %>
     <% if (theme?.base_info?.favicon) { %>

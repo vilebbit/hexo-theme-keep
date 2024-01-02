@@ -2,16 +2,22 @@
 const { enable: pjax_enable } = theme?.pjax || {}
 const {
   server: artalk_server_url,
-  options: artalk_options = {}
+  options: artalk_options = {},
+  use_lite: is_lite
 } = theme?.comment?.artalk || {}
 const artalk_language = config?.language === 'en' ? 'en-US' : 'zh-CN'
-const artalk_css = `${artalk_server_url}/dist/Artalk.css`
-const artalk_js = `${artalk_server_url}/dist/Artalk.js`
+let artalk_css = `${artalk_server_url}/dist/Artalk.css`
+let artalk_js = `${artalk_server_url}/dist/Artalk.js`
+if (is_lite) {
+  artalk_css = "https://unpkg.com/artalk@2/dist/ArtalkLite.css"
+  artalk_js = "https://unpkg.com/artalk@2/dist/ArtalkLite.js"
+}
 %>
+
 <% if(artalk_server_url) { %>
     <div class="artalk-comment-container">
         <link rel="stylesheet" href="<%= artalk_css %>" />
-        <div id="artalk-comment"></div>
+        <div id="artalk-comments"></div>
         <script <%= pjax_enable === true ? 'data-pjax' : '' %>
                 src="<%= artalk_js %>"
                 async
@@ -29,27 +35,34 @@ const artalk_js = `${artalk_server_url}/dist/Artalk.js`
 
           if (!window.KeepCommentPlugin?.changeArtalkTheme) {
             window.KeepCommentPlugin.changeArtalkTheme = () => {
-              Artalk && Artalk.setDarkMode(window.KeepCommentPlugin.initArtalkTheme())
+              window.artalk && window.artalk.setDarkMode(window.KeepCommentPlugin.initArtalkTheme())
             }
           }
 
           window.KeepCommentPlugin.artalkOptions = JSON.parse('<%= JSON.stringify(artalk_options) %>'.replace(/&#34;/g, '"'))
-          window.KeepCommentPlugin.artalkOptions.el = '#artalk-comment'
+          window.KeepCommentPlugin.artalkOptions.el = '#artalk-comments'
           window.KeepCommentPlugin.artalkOptions.server = '<%= artalk_server_url %>'
           window.KeepCommentPlugin.artalkOptions.locale = '<%= artalk_language %>'
           window.KeepCommentPlugin.artalkOptions.site = '<%= theme?.base_info?.title %>' || '<%= config?.title %>'
-          window.KeepCommentPlugin.artalkOptions.darkMode = window.KeepCommentPlugin.initArtalkTheme()
           window.KeepCommentPlugin.artalkOptions.countEl = '.post-comments-count'
+
+          // Comment out this line because idk why but it doesn't work properly,
+          // window.KeepCommentPlugin.artalkOptions.darkMode = window.KeepCommentPlugin.initArtalkTheme()
 
           window.KeepCommentPlugin.initArtalk = () => {
             if (window?.Artalk) {
-              Artalk.init(window.KeepCommentPlugin.artalkOptions)
+              window.artalk = Artalk.init(window.KeepCommentPlugin.artalkOptions)
               window.KeepCommentPlugin.hideLoading()
 
-              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
-              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
-                window.KeepCommentPlugin.changeArtalkTheme()
-              })
+              // Comment out these lines because `document.body.classList.contains('dark-mode')`
+              // always returns an outdated value which was set before toggling. 
+              // Instead, add `window.artalk.setDarkMode()` to `themes/keep/source/js/toggle-theme.js`
+              // to make it work properly.
+
+              // const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              // toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+              //   window.KeepCommentPlugin.changeArtalkTheme()
+              // })
 
             } else {
               setTimeout(() => {

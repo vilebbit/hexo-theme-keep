@@ -65,3 +65,7 @@
 <% if (theme?.pjax?.enable === true) { %>
     <%- partial('pjax/pjax') %>
 <% } %>
+
+<% if (theme?.umami?.enable === true) { %>
+    <script async src="<%- site.data.umami.scriptLink %>" data-website-id="<%- site.data.umami.websiteId %>"></script>
+<% } %>

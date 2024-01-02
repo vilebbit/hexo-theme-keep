@@ -1,6 +1,9 @@
 <%
 const { description: fs_description, hitokoto: fs_hitokoto } = theme?.first_screen || {}
 let final_description = fs_description || ''
+if (Array.isArray(final_description)) {
+    final_description = final_description[Math.floor(Math.random() * final_description.length)]
+}
 final_description = final_description.split('||').map(desc => desc.trim())
 const { enable: sc_enable, links: sc_links } = theme?.social_contact || {}
 %>
@@ -16,7 +19,7 @@ const { enable: sc_enable, links: sc_links } = theme?.social_contact || {}
                     <% } else { %>
                         <% for (const idx in final_description) { %>
                             <% if (final_description[idx]) { %>
-                                <div class="desc-item border-box"><span class="desc"><%= final_description[idx] %></span><span class="cursor">｜</span></div>
+                                <div class="desc-item border-box"><span class="desc"><%- final_description[idx].replace("\\n", "&#10;") %></span><span class="cursor">｜</span></div>
                             <% } %>
                         <% } %>
                     <% } %>

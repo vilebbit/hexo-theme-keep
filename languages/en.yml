@@ -94,6 +94,7 @@ post:
     wechat_scan: "Scan by WeChat"
     telegram: "Share to Telegram"
     discord: "Share to Discord"
+    whatsapp: "Share to WhatsApp"
     twitter: "Share to Twitter(X)"
     arbitrary_share: "Copy permalink"
   reward: Reward Author

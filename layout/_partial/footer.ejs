@@ -4,7 +4,10 @@ const {
     icp: f_icp,
     site_deploy: f_site_deploy
 } = theme?.footer || {}
-const { author: bi_author } = theme?.base_info || {}
+const { 
+    author: bi_author,
+    author_website: author_website
+ } = theme?.base_info || {}
 const { author: hexo_author } = config
 const { site_uv: bsz_site_uv, site_pv: bsz_site_pv, enable: bsz_enable } = theme?.website_count?.busuanzi_count || {}
 const footer_style_type = theme.footer?.shields_style?.enable === true ? 'shields' : 'default'
@@ -67,7 +70,7 @@ const web_master = bi_author || hexo_author
             <div class="copyright-info info-item <%= footer_style_type %>">
                 &copy;&nbsp;<% if (f_since) { %><span><%= f_since %></span>&nbsp;-&nbsp;<% } %><%= date(new Date(), 'YYYY') %>
                 <% if (web_master) { %>
-                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="<%- url_for('/') %>"><%= web_master %></a>
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="<%- author_website %>"><%= web_master %></a>
                 <% } %>
                 &nbsp;/&nbsp;
                 <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
@@ -81,6 +84,7 @@ const web_master = bi_author || hexo_author
             </div>
 
             <div class="theme-info info-item <%= footer_style_type %>">
+                <a href="/privacy">Privacy Policy</a>&nbsp;/
                 <%- __('footer.powered_by', '<a target="_blank" href="https://hexo.io">Hexo</a>') %>
             </div>
 
