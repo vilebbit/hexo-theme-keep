@@ -629,6 +629,9 @@ KEEP.initUtils = () => {
       const descBox = document.querySelector('.first-screen-content .description')
       if (descBox) {
         descBox.style.opacity = '0'
+        const randomText = fsc.description[
+          Math.floor(Math.random() * fsc.description.length)
+        ].replace("\\n", "\n")
 
         setTimeout(
           () => {
@@ -637,7 +640,7 @@ KEEP.initUtils = () => {
             descItemList.forEach((descItem) => {
               const desc = descItem.querySelector('.desc')
               const cursor = descItem.querySelector('.cursor')
-              const text = desc.innerHTML
+              const text = randomText
               desc.innerHTML = ''
               let charIndex = 0
 
