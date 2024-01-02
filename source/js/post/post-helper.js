@@ -194,7 +194,7 @@ function initPostHelper() {
 
     resetPostUpdateDate() {
       const updateDateDom = document.querySelector(
-        '.post-meta-info-container .post-update-date .pc'
+        '.post-meta-info-container .post-update-date .datetime'
       )
       if (updateDateDom) {
         const updated = new Date(updateDateDom.dataset.updated).getTime()
