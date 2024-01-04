@@ -67,5 +67,11 @@
 <% } %>
 
 <% if (theme?.umami?.enable === true) { %>
-    <script async src="<%- site.data.umami.scriptLink %>" data-website-id="<%- site.data.umami.websiteId %>"></script>
+    <script 
+        async 
+        src="<%- site.data.umami.scriptLink %>" 
+        data-website-id="<%- site.data.umami.websiteId %>"
+        data-domains="<%- site.data.umami.domains %>"
+    >
+    </script>
 <% } %>
