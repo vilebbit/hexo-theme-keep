@@ -20,9 +20,9 @@ const post_avatar = page?.avatar || theme?.base_info?.avatar
 
             <div class="post-content-bottom border-box<%= (page?.post_cover || page?.home_cover) ? ' has-cover' : '' %>">
                 <% if (!page?.post_cover && !page?.home_cover) { %>
-                    <div class="post-title">
+                    <h1 class="post-title">
                         <%= page.title %>
-                    </div>
+                    </h1>
                 <% } %>
 
                 <% if (post_author) { %>
