@@ -41,18 +41,27 @@ if (config?.language === 'zh-TW') {
                 <div class="type">
                     <%- __('copyright.license') %>
                 </div>
-                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
-                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed<%= licenseLang %>">
-                        <i class="fa-brands fa-creative-commons"></i>
-                        <i class="fa-brands fa-creative-commons-by"></i>
-                        <i class="fa-brands fa-creative-commons-nc"></i>
-                        <i class="fa-brands fa-creative-commons-sa"></i>
-                    </a>
+                <div class="flex-center" style="gap: 8px;">
+                    <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed<%= licenseLang %>">
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        </a>
+                    </div>
+                    <div class="content">
+                        (Exc. Screenshots)
+                    </div>
                 </div>
             </div>
         </div>
 
         <i class="copyright-bg fa-solid fa-copyright"></i>
+
+        <div style="margin-block-start: 1em; margin-block-end: 0.5em; font-size: small; color: var(--text-color-4);">
+            Copyright of used screenshots are belong to their original publishers.
+        </div>
     </div>
     <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="<%= __('copy_copyright.copy') %>" data-tooltip-offset-y="-2px">
         <i class="fa-solid fa-copy"></i>
