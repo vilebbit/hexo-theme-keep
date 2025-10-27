@@ -68,10 +68,15 @@
 
 <% if (theme?.umami?.enable === true) { %>
     <script>
+        function shouldInterrupt(payload) {
+            if (payload.url.includes("fancy-article")) {
+                return true;
+            }
+            return false;
+        }
         function beforeGoHandler(type, payload) {
-            if (payload) {
-                console.log("type: ", type);
-                console.log("payload", payload);
+            if (shouldInterrupt(payload)) {
+                return false;
             }
             return payload;
         }
