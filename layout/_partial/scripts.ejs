@@ -67,11 +67,21 @@
 <% } %>
 
 <% if (theme?.umami?.enable === true) { %>
+    <script>
+        function beforeGoHandler(type, payload) {
+            if (payload) {
+                console.log("type: ", type);
+                console.log("payload", payload);
+            }
+            return payload;
+        }
+    </script>
     <script 
         async 
         src="<%- site.data.umami.scriptLink %>" 
         data-website-id="<%- site.data.umami.websiteId %>"
         data-domains="<%- site.data.umami.domains %>"
+        data-before-send="beforeGoHandler"
     >
     </script>
     <script type="text/javascript">
